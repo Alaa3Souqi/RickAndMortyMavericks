@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/asouqi/.gradle/caches/transforms-3/cdd8388d8eb0bb4101b550377669da59/transformed/appcompat-1.4.1/res/layout/abc_list_menu_item_radio.xml" value="0.1" />
+        <entry key="..\:/Users/asouqi/AndroidStudioProjects/ComposesTutorial/RickAndMortyMvRx/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/asouqi/AndroidStudioProjects/ComposesTutorial/RickAndMortyMvRx/app/src/main/res/layout/fragment_characters.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/asouqi/AndroidStudioProjects/ComposesTutorial/RickAndMortyMvRx/app/src/main/res/layout/fragment_rick_morty.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/asouqi/AndroidStudioProjects/ComposesTutorial/RickAndMortyMvRx/app/src/main/res/layout/rick_and_morty_item.xml" value="0.19907407407407407" />
+        <entry key="..\:/Users/asouqi/AndroidStudioProjects/ComposesTutorial/RickAndMortyMvRx/app/src/main/res/layout/rv_rick_and_morty.xml" value="0.20416666666666666" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
