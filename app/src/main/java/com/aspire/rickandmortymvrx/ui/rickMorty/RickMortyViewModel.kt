@@ -4,23 +4,25 @@ import com.airbnb.mvrx.MavericksViewModel
 import com.airbnb.mvrx.MavericksViewModelFactory
 import com.airbnb.mvrx.ViewModelContext
 import com.aspire.rickandmortymvrx.BaseApplication
+import com.aspire.rickandmortymvrx.di.AssistedViewModelFactory
+import com.aspire.rickandmortymvrx.di.daggerMavericksViewModelFactory
 import com.aspire.rickandmortymvrx.mavericks.CharacterState
+import dagger.assisted.Assisted
+import dagger.assisted.AssistedFactory
+import dagger.assisted.AssistedInject
 
-class RickMortyViewModel(
-    initialState: CharacterState,
+class RickMortyViewModel @AssistedInject constructor(
+    @Assisted initialState: CharacterState,
     private val repository: RickMortyRepository,
 ) :
     MavericksViewModel<CharacterState>(initialState) {
 
-    companion object : MavericksViewModelFactory<RickMortyViewModel, CharacterState> {
-        override fun create(
-            viewModelContext: ViewModelContext,
-            state: CharacterState
-        ): RickMortyViewModel {
-            val repository = viewModelContext.app<BaseApplication>().rickMortyRepository
-            return RickMortyViewModel(state, repository)
-        }
+    @AssistedFactory
+    interface Factory : AssistedViewModelFactory<RickMortyViewModel, CharacterState> {
+        override fun create(state: CharacterState): RickMortyViewModel
     }
+
+    companion object : MavericksViewModelFactory<RickMortyViewModel, CharacterState> by daggerMavericksViewModelFactory()
 
     init {
         getData()
