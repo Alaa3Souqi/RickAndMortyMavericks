@@ -6,6 +6,8 @@ import com.airbnb.mvrx.withState
 import com.aspire.rickandmortymvrx.mavericks.CharacterState
 import com.aspire.rickandmortymvrx.modles.Character
 import com.aspire.rickandmortymvrx.modles.CharacterResponse
+import io.mockk.coEvery
+import io.mockk.mockk
 import org.junit.Assert
 import org.junit.Rule
 import org.junit.Test
