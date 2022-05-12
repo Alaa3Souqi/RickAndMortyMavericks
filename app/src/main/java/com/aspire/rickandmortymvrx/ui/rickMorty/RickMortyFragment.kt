@@ -21,7 +21,7 @@ class RickMortyFragment : Fragment(), MavericksView {
 
     override fun invalidate() {
         withState(viewModel) {
-            val state = it.state
+            val state = it.result
             binding.progress.isVisible = state is Loading
 
             when (state) {

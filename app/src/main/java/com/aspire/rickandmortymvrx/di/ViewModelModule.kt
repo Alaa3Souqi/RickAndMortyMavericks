@@ -11,6 +11,6 @@ interface ViewModelModule {
     @Binds
     @IntoMap
     @ViewModelKey(RickMortyViewModel::class)
-    fun helloViewModelFactory(factory: RickMortyViewModel.Factory): AssistedViewModelFactory<*, *>
+    fun viewModelFactory(factory: RickMortyViewModel.Factory): AssistedViewModelFactory<*, *>
 
 }

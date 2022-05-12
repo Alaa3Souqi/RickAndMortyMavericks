@@ -2,8 +2,6 @@ package com.aspire.rickandmortymvrx.ui.rickMorty
 
 import com.airbnb.mvrx.MavericksViewModel
 import com.airbnb.mvrx.MavericksViewModelFactory
-import com.airbnb.mvrx.ViewModelContext
-import com.aspire.rickandmortymvrx.BaseApplication
 import com.aspire.rickandmortymvrx.di.AssistedViewModelFactory
 import com.aspire.rickandmortymvrx.di.daggerMavericksViewModelFactory
 import com.aspire.rickandmortymvrx.mavericks.CharacterState
@@ -32,7 +30,7 @@ class RickMortyViewModel @AssistedInject constructor(
         suspend {
             repository.getCharacters("1")
         }.execute {
-            copy(state = it)
+            copy(result = it)
         }
     }
 }
