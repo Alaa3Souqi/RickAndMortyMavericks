@@ -1,6 +1,5 @@
 package com.aspire.rickandmortymvrx.ui.rickMorty
 
-import com.aspire.rickandmortymvrx.network.ApiClient
 import com.aspire.rickandmortymvrx.network.ApiService
 import javax.inject.Inject
 
