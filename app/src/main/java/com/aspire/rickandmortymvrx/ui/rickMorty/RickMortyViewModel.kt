@@ -25,6 +25,7 @@ class RickMortyViewModel(
     init {
         getData()
     }
+    //TODO: always make the viewModel a view driven class, so getData() should be invoked from UI when the screen is loaded
 
     private fun getData() {
         suspend {

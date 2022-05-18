@@ -31,6 +31,6 @@ class RickMortyViewModelTest {
         withState(viewModel) { state ->
             Assert.assertEquals(Success(CharacterResponse(charactersList)), state.state)
         }
-
+        //nice work and you can also use viewModel.stateFlow.first()
     }
 }
