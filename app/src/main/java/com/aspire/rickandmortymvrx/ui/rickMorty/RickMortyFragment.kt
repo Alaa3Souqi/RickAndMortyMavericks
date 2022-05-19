@@ -15,20 +15,20 @@ import com.xwray.groupie.GroupieAdapter
 
 class RickMortyFragment : Fragment(), MavericksView {
 
-    private val binding by lazy { FragmentRickMortyBinding.inflate(layoutInflater) }
-    //TODO: avoid using lazy initializer with views related variables as they only live between onCreateView and onDestroyView and accessing them beyond that point could lead to memory leaks, use lateinit var instead
+    private var _binding: FragmentRickMortyBinding? = null
+    private val binding get() = _binding!!
+
     private val viewModel: RickMortyViewModel by fragmentViewModel()
     private val adapter = GroupieAdapter()
 
     override fun invalidate() {
         withState(viewModel) {
-            val state = it.state
-            //TODO: it.state can be used directly without this extra variable
-            binding.progress.isVisible = state is Loading
 
-            when (state) {
+            binding.progress.isVisible = it.state is Loading
+
+            when (it.state) {
                 is Success -> {
-                    convertToGroupie(state)
+                    convertToGroupie(it.state)
 
                     binding.rvRickAndMorty.adapter = adapter
 
@@ -36,7 +36,7 @@ class RickMortyFragment : Fragment(), MavericksView {
                 is Fail -> {
                     Toast.makeText(
                         requireContext(),
-                        state.error.message ?: "Try Again",
+                        it.state.error.message ?: "Try Again",
                         Toast.LENGTH_LONG
                     ).show()
                 }
@@ -56,7 +56,7 @@ class RickMortyFragment : Fragment(), MavericksView {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        //TODO: add layout inflation logic here after converting `binding` to lateinit var
+        _binding = FragmentRickMortyBinding.inflate(layoutInflater)
         return binding.root
     }
 
