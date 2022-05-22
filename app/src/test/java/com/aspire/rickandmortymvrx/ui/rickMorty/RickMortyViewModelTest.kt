@@ -27,6 +27,7 @@ class RickMortyViewModelTest {
         }
 
         val viewModel = RickMortyViewModel(CharacterState(), repo)
+        viewModel.getData()
 
         withState(viewModel) { state ->
             Assert.assertEquals(Success(CharacterResponse(charactersList)), state.result)
