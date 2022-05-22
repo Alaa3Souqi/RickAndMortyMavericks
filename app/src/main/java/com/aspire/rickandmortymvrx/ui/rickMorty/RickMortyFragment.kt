@@ -1,6 +1,7 @@
 package com.aspire.rickandmortymvrx.ui.rickMorty
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +11,6 @@ import androidx.fragment.app.Fragment
 import com.airbnb.mvrx.*
 import com.aspire.rickandmortymvrx.databinding.FragmentRickMortyBinding
 import com.aspire.rickandmortymvrx.modles.CharacterItems
-import com.aspire.rickandmortymvrx.modles.CharacterResponse
 import com.xwray.groupie.GroupieAdapter
 
 class RickMortyFragment : Fragment(), MavericksView {
@@ -24,11 +24,11 @@ class RickMortyFragment : Fragment(), MavericksView {
     override fun invalidate() {
         withState(viewModel) {
 
-            binding.progress.isVisible = it.state is Loading
+            binding.progress.isVisible = it.result is Loading
 
-            when (it.state) {
+            when (it.result) {
                 is Success -> {
-                    convertToGroupie(it.state)
+                    adapter.addAll(it.result.invoke().CharactersList.map { i -> CharacterItems(i) })
 
                     binding.rvRickAndMorty.adapter = adapter
 
@@ -36,7 +36,7 @@ class RickMortyFragment : Fragment(), MavericksView {
                 is Fail -> {
                     Toast.makeText(
                         requireContext(),
-                        it.state.error.message ?: "Try Again",
+                        it.result.error.message ?: "Try Again",
                         Toast.LENGTH_LONG
                     ).show()
                 }
@@ -45,19 +45,17 @@ class RickMortyFragment : Fragment(), MavericksView {
         }
     }
 
-    private fun convertToGroupie(state: Success<CharacterResponse>) {
-        state.invoke().CharactersList.forEach {
-            adapter.add(CharacterItems(it))
-        }
-        //TODO: can be -> adapter.addAll(state.invoke().CharactersList.map{CharacterItems(it)})
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentRickMortyBinding.inflate(layoutInflater)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel.getData()
     }
 
 }

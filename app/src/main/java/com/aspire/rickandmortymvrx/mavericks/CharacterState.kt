@@ -6,5 +6,5 @@ import com.airbnb.mvrx.Uninitialized
 import com.aspire.rickandmortymvrx.modles.CharacterResponse
 
 data class CharacterState(
-    val state: Async<CharacterResponse> = Uninitialized
+    val result: Async<CharacterResponse> = Uninitialized
 ) : MavericksState

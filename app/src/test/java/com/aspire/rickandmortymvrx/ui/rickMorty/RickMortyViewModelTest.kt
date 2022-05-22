@@ -29,8 +29,8 @@ class RickMortyViewModelTest {
         val viewModel = RickMortyViewModel(CharacterState(), repo)
 
         withState(viewModel) { state ->
-            Assert.assertEquals(Success(CharacterResponse(charactersList)), state.state)
+            Assert.assertEquals(Success(CharacterResponse(charactersList)), state.result)
         }
-        //nice work and you can also use viewModel.stateFlow.first()
+
     }
 }
