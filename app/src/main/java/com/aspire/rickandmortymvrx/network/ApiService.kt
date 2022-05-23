@@ -1,5 +1,4 @@
 package com.aspire.rickandmortymvrx.network
-
 import com.aspire.rickandmortymvrx.modles.CharacterResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
